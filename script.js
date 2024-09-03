@@ -20,4 +20,13 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
     }
 
     document.getElementById('neededClasses').value = neededClasses > 0 ? Math.ceil(neededClasses) + ' more classes' : 'None';
+
+    // Calculate how many classes the student can bunk
+    let maxBunkableClasses = attendedClasses - (requiredAttendance * totalClasses / 100);
+
+    if (maxBunkableClasses < 0) {
+        maxBunkableClasses = 0;  // Cannot bunk any classes
+    }
+
+    document.getElementById('bunkableClasses').value = maxBunkableClasses > 0 ? Math.floor(maxBunkableClasses) + ' classes' : 'None';
 });
